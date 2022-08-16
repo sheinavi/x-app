@@ -1,0 +1,7 @@
+# manually created based on https://stackoverflow.com/questions/38040502/how-do-you-redirect-all-request-to-public-folder-in-laravel-5
+
+DirectoryIndex index.php
+
+RewriteEngine On 
+RewriteRule ^$ public/index.php [L]
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]

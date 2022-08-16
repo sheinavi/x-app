@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300&display=swap');
+html {
+    scroll-behavior: smooth;
+    
+}
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+main{
+    background: $gray-900;
+    color: saddlebrown;
+    height: calc(100vh - 20px);
+}
+
+label.required:after{
+    content: ' *';
+    color: $red-300;    
+}
+
+img.question-image{
+    height: 40vh;
+    width: 55vh;
+    border: 1px solid $gray-600;
+    border-radius: 8px;
+}
+img.test-banner{
+    height: 50vh;
+    width: 65vh;
+    border: 1px solid $gray-600;
+    border-radius: 8px;
+}
