@@ -8,7 +8,7 @@
         <div class="col-md-9">
           <div class="card">
             <div class="card-body" id="begin">
-                  <h1> {{$test->title}} </h1>
+                  <h1 class="mb-3"> {{$test->title}} </h1>
                   
                   <div class="row" id="description-box">
                     <div class="col-md-6">
@@ -27,13 +27,13 @@
 
                   @foreach ($items as $item)
                       <div class="row test-item d-none one-question" id="item-{{$item->id}}" data-val="{{$item->correct_answer->id}}" > 
-                          <div class="col-12">
-                              <h3> {{$item->question}} </h3>
-                          </div>
+                          <div class="col-12"> <h3> {{$item->question}} </h3> </div>
                           <div class="col-md-6 text-center">
+                              
                               <img src="{{asset($item->featured_image)}}" class="question-image" alt="">
                           </div>
                           <div class="col-md-6">
+                              
                               <div class="col correct-answer-text h3 d-none"><p class="my-2"> Correct Answer: </p></div>
                               @foreach ($item->choices as $choice)
                                 <label class="form-check-label" for="{{$choice->id}}">
@@ -92,11 +92,11 @@
                 display: inline-block;
             }          
             div#social-links ul li a {
-                padding: 20px;
+                padding: 10px;
                 border: 1px solid #ccc;
                 margin: 1px;
                 font-size: 30px;
-                color: #222;
+                color: #4267B2;
                 background-color: #ccc;
             }
 

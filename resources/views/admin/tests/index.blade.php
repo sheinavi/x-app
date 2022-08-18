@@ -25,7 +25,7 @@
                     @foreach ($tests as $test)
                         <tr>
                             <td> {{$test->title}} </td>
-                            <td> {{$test->items->count()}} </td>
+                            <td> <a href="{{route('admin.test-items.index',['slug' => $test->slug])}}"> {{$test->items->count()}} </a> </td>
                             <td> {{$test->is_approved == 1 ? 'Approved' : 'Pending'}} </td>
                             <td> {{$test->getPublishDate()}} </td>
                             <td>  

@@ -16,9 +16,24 @@ class AdminTestItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user_id = auth()->user()->id;
+
+        $items = TestItem::whereHas('test',function($q) use($request, $user_id){
+                    $q->where('slug',$request->slug);
+                    $q->where('author_id',$user_id);
+                })->get();
+        
+        if($items){
+            $data = [
+                'items' => $items
+            ];
+            
+            return view('admin.tests.items.index')->with($data);
+        }   
+        
+        return abort(404);
     }
 
     /**
@@ -107,7 +122,25 @@ class AdminTestItemsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_id = auth()->user()->id;
+
+        $item = TestItem::whereHas('test',function($q) use($user_id) {
+                    $q->where('author_id',$user_id);
+                })->where('id',$id)->first();
+
+       
+        if($item){
+            
+            $data = [
+                'item' => $item,
+                'start' => 1,
+                'correct_answer_id'=> $item->correct_answer->id
+            ];
+
+            return view('admin.tests.items.edit')->with($data);
+        }
+
+        return abort(404);
     }
 
     /**
@@ -119,7 +152,36 @@ class AdminTestItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $test_item = TestItem::find($id);
+        if($test_item->update(['question' => $request->question])){
+
+            if($request->hasFile('featured_image')){
+                $file= $request->file('featured_image');
+                $filename= $test_item->id.'-'.$file->getClientOriginalName();
+                $dir = 'uploads/'.$test_item->id;
+
+                File::ensureDirectoryExists($dir);
+                
+                $file->move(public_path($dir), $filename);
+
+                $test_item->featured_image = 'uploads/'.$test_item->id.'/'.$filename;
+                $test_item->save();
+            }
+            
+            foreach($request->choices as $key => $val){
+                $choice = Choice::find($key);
+                if($choice){
+                    $choice->text = $val;
+                    $choice->is_correct_answer = $request->correct_answer == $key ? 1 : 0;
+                    $choice->save();
+                }
+            }
+
+        }
+
+        
+
+        return back();
     }
 
     /**
@@ -130,6 +192,15 @@ class AdminTestItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        $test_item = TestItem::find($id);
+
+        if($test_item){
+            $test_item->choices()->delete();
+            $test_item->delete();
+        }
+
+        return back();
+
     }
 }

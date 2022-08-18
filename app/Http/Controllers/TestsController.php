@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Share;
 use Carbon\Carbon;
 use App\Models\Test;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class TestsController extends Controller
 
         if($test){
 
-            $shareComponent = \Share::page(
+            $shareComponent = Share::page(
                 route('test.show',['slug' => $test->slug]),
                 $test->title,
             )

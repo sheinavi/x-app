@@ -1,28 +1,44 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="row">
-      <div class="card">
-        <div class="card-body">
+@push('styles')
+    <style>
+      #search-container{
+        background-color: #adb5bd;
+        background-image: linear-gradient(180deg, #adb5bd 10%, #e9ecef 100%);
+        background-size: cover;
+      }
 
-          <div class="row">
-            <form action="">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search Quizzes" aria-describedby="search">
-                <select name="category_id" class="form-select">
-                  <option value=""> Any Category </option>
-                  @foreach ($categories as $category)
-                      @if (request()->category_id == $category->id)
-                          <option value="{{$category->id}}" selected> {{$category->title}} </option>
-                      @else
-                        <option value="{{$category->id}}"> {{$category->title}} </option>
-                      @endif
-                  @endforeach
-                </select>
-                <button class="btn btn-outline-primary" type="button" id="search">Search</button>
-              </div>
-            </form>
-          </div>
+
+    </style>
+@endpush
+
+@section('content')
+
+<div class="row" id="search-container">
+  <form action="" class="col-12">
+    <div class="input-group my-3">
+      <input type="text" class="form-control" placeholder="Search Quizzes" aria-describedby="search">
+      
+        <select name="category_id" class="form-select">
+          <option value=""> Any Category </option>
+          @foreach ($categories as $category)
+              @if (request()->category_id == $category->id)
+                  <option value="{{$category->id}}" selected> {{$category->title}} </option>
+              @else
+                <option value="{{$category->id}}"> {{$category->title}} </option>
+              @endif
+          @endforeach
+        </select>
+     
+      <button class="btn btn-outline-primary" type="button" id="search">Search</button>
+    </div>
+  </form>
+</div>
+
+   
+      
+
+          
 
           <div class="row">
             @if ( $tests->count() > 0)
@@ -45,7 +61,4 @@
             @endif
           </div>
 
-        </div>
-      </div>
-    </div>
 @endsection

@@ -4,6 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{{ $page_title ?? config('app.name') }}</title>
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -13,8 +15,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/admin/sb-admin-2.css')}}" rel="stylesheet">
-
-    <title>{{ $page_title ?? config('app.name') }}</title>
+    
+    @stack('styles')
+    
   </head>
   <body id="page-top">
 
