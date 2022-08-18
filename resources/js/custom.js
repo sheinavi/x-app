@@ -6,4 +6,6 @@ window.bootstrap = bootstrap;
     return new bootstrap.Tooltip(tooltipTriggerEl)
     });
 
-    console.log("hello");
+    function copyLink(url) {
+        navigator.clipboard.writeText(url);
+    }

@@ -17,8 +17,9 @@ class HomepageController extends Controller
 
         $data = [
             'tests' => $tests,
-            'categories' => Category::orderBy('title')->get()
+            'categories' => Category::whereHas('tests')->orderBy('title')->get()
         ];
+        
         return view('public.index')->with($data);
     }
 

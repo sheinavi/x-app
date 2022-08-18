@@ -66,11 +66,25 @@ class TestsController extends Controller
         
 
         if($test){
-            
+
+            $shareComponent = \Share::page(
+                route('test.show',['slug' => $test->slug]),
+                $test->title,
+            )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()        
+            ->reddit();
+
             $data = [
                 'test' => $test,
-                'items' => $test->items
+                'items' => $test->items,
+                'shareComponent' => $shareComponent
             ];
+
+            
 
             return view('public.tests.show')->with($data);
         }else{

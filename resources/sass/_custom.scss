@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300&display=swap');
 html {
     scroll-behavior: smooth;
-    
+    height: 100vh;
+    flex-direction: column;
 }
 
 body{
@@ -9,9 +10,30 @@ body{
 }
 
 main{
-    background: $gray-900;
-    color: saddlebrown;
-    height: calc(100vh - 20px);
+    min-height: calc(100vh - 100px);
+}
+
+nav#main-navbar, .dropdown-menu{
+    background-color: $blue-800;
+    color: #fff;
+    a{
+        color:#fff;
+    }
+    a.dropdown-item:hover{
+        background-color: $primary;
+    }
+}
+
+footer{
+    background-color: $blue-800;
+    margin-top: auto;
+    a{
+        color: #fff;
+    }
+}
+
+a{
+    text-decoration: none;
 }
 
 label.required:after{

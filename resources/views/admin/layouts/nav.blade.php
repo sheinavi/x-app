@@ -32,7 +32,7 @@
         <a class="nav-link collapsed" href="#collapseTwo" data-bs-toggle="collapse"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Creator</span>
+            <span>My Tests</span>
         </a>
         <div id="collapseTwo" class="collapse {{Route::is('admin.tests.*') || Route::is('admin.test-items.create') ? 'show':''}}" aria-labelledby="headingTwo">
             <div class="bg-white py-2 collapse-inner rounded">

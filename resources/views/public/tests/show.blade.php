@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-9">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" id="begin">
                   <h1> {{$test->title}} </h1>
                   
                   <div class="row" id="description-box">
@@ -17,8 +17,11 @@
                     <div class="col-md-6">
                       <p> {!! $test->description  !!} </p>
                     </div>
-                    <div class="col-md-12 d-grid mt-5">
-                      <button class="btn btn-block btn-outline-success btn-lg start"> Start </button>
+                    <div class="col-md-6">
+                      &nbsp;
+                    </div>
+                    <div class="col-md-6 d-grid mt-5">
+                      <button class="btn btn-block btn-primary btn-lg start"> Start </button>
                     </div>
                   </div>
 
@@ -47,14 +50,18 @@
 
                           
 
-                          <div class="col-md-4 offset-md-4 d-grid mt-3">
-                              <button class="go-next btn btn-primary btn-block" type="button"> Next </button>
+                          <div class="col-md-6 offset-md-6 d-grid mt-3">
+                              <button class="go-next btn btn-primary btn-block" type="button"> Check My Answer </button>
                           </div>
                       </div>
                   @endforeach
 
-                  <div id="finish" class="d-none">FINISH</div>
+                  
             </div>
+
+            @include('public.tests.parts.finish')
+
+
           </div>
         </div>
     </div>
@@ -69,13 +76,29 @@
       }
 
       .choice-container:hover{
-          background-color: blue;
+          background-color: #fd7e14; /*orange-500*/
           cursor: pointer;
       }
 
       .form-check-label{
         display:block;
       }
+
+      div#social-links {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            div#social-links ul li {
+                display: inline-block;
+            }          
+            div#social-links ul li a {
+                padding: 20px;
+                border: 1px solid #ccc;
+                margin: 1px;
+                font-size: 30px;
+                color: #222;
+                background-color: #ccc;
+            }
 
     </style>
 @endpush
@@ -88,8 +111,6 @@
             let active_question = null;
             let score = 0;
             let total_items = 0;
-
-            
 
             $("div.one-question").each(function(){
                let id =  ($(this).attr('id')).split("-");
@@ -108,22 +129,25 @@
             });
 
             $('button.go-next').on('click',function(){
-                $(this).prop("disabled",true);
+                
                 //add timer ?
+                let thisBtn = $(this);
 
                 $('#item-'+active_question).find('.is-correct').addClass('is-correct-answer');
 
                 if ($('input:radio[name=choice_'+active_question+']').is(':checked')) {
                   
+                  thisBtn.prop("disabled",true);
+
                   let selected = $('input:radio[name=choice_'+active_question+']:checked').val();
 
                   showCorrectAnswer();
 
                   if(selected == $('#item-'+active_question).data('val')) {
                     score++;
-                    toastr.success('Your answer is correct!')
+                    toastr.success('Your answer is correct!',{ fadeAway: 1000 })
                   }else{
-                    toastr.error('Sorry, your answer is incorrect.');
+                    toastr.error('Sorry, your answer is incorrect.',{ fadeAway: 1000 });
                   }
                   updateScoreBoard();
 
@@ -155,6 +179,7 @@
                   active_question = active_container;
                 }else{
                   $('.one-question').addClass('d-none');
+                  $('#begin').addClass('d-none');
                   $('#finish').removeClass('d-none');
                 }
 
@@ -162,6 +187,7 @@
             }
 
             function updateScoreBoard(){
+              $('span#score').removeClass('text-danger').addClass('text-success');
               $('span#score').text(score);
             }
       });

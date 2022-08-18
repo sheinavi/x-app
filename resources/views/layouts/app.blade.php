@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm" id="main-navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -88,12 +88,12 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </main>
 
-        <footer class="container p-3">
+        <footer class="container-fluid p-3">
             <div class="row">
                 <div class="col-md-8"> 
                     <div class="d-flex justify-content-start">
