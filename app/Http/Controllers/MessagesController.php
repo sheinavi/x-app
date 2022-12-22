@@ -16,8 +16,12 @@ class MessagesController extends Controller
           ]);
 
         foreach (['sheinavi@gmail.com', $request->email] as $recipient) {
-            Mail::to($recipient)->send(new ContactUsEmail($request->message));
+            Mail::to($recipient)->send(new ContactUsEmail($request->email,$request->message));
         }
+
+        
+        $request->session()->flash('message', 'Message sent.');
+        $request->session()->flash('sender_email', $request->email);
 
         return back();
     }

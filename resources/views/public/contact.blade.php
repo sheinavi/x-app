@@ -28,6 +28,14 @@
                 </div>
             @endif
 
+            @if(session()->has('message'))
+              <p class="alert alert-success"> <strong>Thank you!</strong> 
+                  <br>
+                   {{ session('message') }}
+                   <br>We also sent a copy to {{ session('sender_email')}}.
+              </p>
+            @endif
+
             <form method="POST" action="{{route('contact_us_submit')}}">
               
               @csrf

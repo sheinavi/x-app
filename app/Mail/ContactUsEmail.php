@@ -18,10 +18,12 @@ class ContactUsEmail extends Mailable
      */
 
      public $message;
+     public $sender_email;
 
-    public function __construct($message)
+    public function __construct($sender_email,$message)
     {
         $this->message = $message;
+        $this->sender_email = $sender_email;
     }
 
     /**
@@ -32,6 +34,9 @@ class ContactUsEmail extends Mailable
     public function build()
     {
         
-        return $this->view('emails.contactus')->with(['content' => $this->message]);
+        return $this->view('emails.contactus')->with([
+                'sender_email' => $this->sender_email,
+                'content' => $this->message
+            ]);
     }
 }
