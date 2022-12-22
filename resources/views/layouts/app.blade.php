@@ -6,8 +6,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:image" content="{{ $social_thumbnail ?? 'https://source.unsplash.com/hhq1Lxtuwd8/600x300' }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Quizz') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -67,7 +71,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
                                     @hasanyrole('creator|admin')
-                                        <a class="dropdown-item" href="{{route('admin.dashboard')}}">Admin</a>
+                                        <a class="dropdown-item" href="{{route('admin.dashboard')}}">Create/Manage Tests</a>
                                     @endhasanyrole
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"

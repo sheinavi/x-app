@@ -56,6 +56,11 @@ class AdminTestsController extends Controller
         ]);
 
         $request->merge(['author_id' => auth()->user()->id]);
+        
+        if(auth()->user()->hasRole('admin')){
+            $request->merge(['is_approved' => 1]);
+        }
+        
 
         $test = Test::create($request->except(['featured_image']));
 

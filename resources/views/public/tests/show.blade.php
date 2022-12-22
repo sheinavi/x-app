@@ -1,13 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.app', ['social_thumbnail' => asset($test->featured_image) ])
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           @include('public.tests.parts.scoreboard')
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
           <div class="card">
             <div class="card-body" id="begin">
+                  
                   <h1 class="mb-3"> {{$test->title}} </h1>
                   
                   <div class="row" id="description-box">
@@ -27,7 +28,7 @@
 
                   @foreach ($items as $item)
                       <div class="row test-item d-none one-question" id="item-{{$item->id}}" data-val="{{$item->correct_answer->id}}" > 
-                          <div class="col-12"> <h3> {{$item->question}} </h3> </div>
+                          <div class="col-12"> <h3 class="text-success fw-bold"> {{$item->question}} </h3> </div>
                           <div class="col-md-6 text-center">
                               
                               <img src="{{asset($item->featured_image)}}" class="question-image" alt="">
@@ -64,9 +65,10 @@
 
           </div>
         </div>
+        <div class="col-md-2"> <!-- ad space --> </div>
     </div>
     
-
+    <div class="row" id="relatedTests"></div>
 @endsection
 
 @push('styles')
@@ -188,6 +190,7 @@
 
             function updateScoreBoard(){
               $('span#score').removeClass('text-danger').addClass('text-success');
+              $('span#final_score').text(score);
               $('span#score').text(score);
             }
       });

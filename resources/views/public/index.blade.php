@@ -8,6 +8,14 @@
         background-size: cover;
       }
 
+      img.homepage-test-thumbnail{
+        width: 100%;
+        height: 150px;
+      }
+
+      .form-select.search_category{
+        max-width:20%;
+      }
 
     </style>
 @endpush
@@ -19,7 +27,7 @@
     <div class="input-group my-3">
       <input type="text" class="form-control" placeholder="Search Quizzes" aria-describedby="search">
       
-        <select name="category_id" class="form-select">
+        <select name="category_id" class="form-select search_category">
           <option value=""> Any Category </option>
           @foreach ($categories as $category)
               @if (request()->category_id == $category->id)
@@ -30,24 +38,21 @@
           @endforeach
         </select>
      
-      <button class="btn btn-outline-primary" type="button" id="search">Search</button>
+      <button class="btn btn-primary" type="button" id="search">Search</button>
     </div>
   </form>
 </div>
 
-   
-      
-
-          
-
           <div class="row">
             @if ( $tests->count() > 0)
               @foreach ($tests as $test)
-                  <div class="col-md-3">
+                  <div class="col-md-3 d-flex align-items-stretch">
                     <div class="card" style="w-100">
-                      <img src="{{asset($test->featured_image)}}" class="card-img-top" alt="{{$test->title}}">
+                      
+                      <img src="{{asset($test->featured_image)}}" class="homepage-test-thumbnail m-auto pt-2" alt="{{$test->title}}">
+                      
                       <div class="card-body">
-                        <h5 class="card-title">{{$test->title}}</h5>
+                        <h5 class="card-title text-primary">{{$test->title}}</h5>
                         <p class="card-text">{!! $test->description !!}.</p>
                         <a href="{{route('test.show',['slug' => $test->slug])}}" class="btn btn-primary">START</a>
                       </div>

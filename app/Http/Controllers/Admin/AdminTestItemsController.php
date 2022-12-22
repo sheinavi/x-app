@@ -69,14 +69,14 @@ class AdminTestItemsController extends Controller
         if($test_item){
             if($request->hasFile('featured_image')){
                 $file= $request->file('featured_image');
-                $filename= $test_item->id.'-'.$file->getClientOriginalName();
-                $dir = 'uploads/'.$test_item->id;
+                $filename= $request->test_id.'-'.$file->getClientOriginalName();
+                $dir = 'uploads/'.$request->test_id;
 
                 File::ensureDirectoryExists($dir);
                 
                 $file->move(public_path($dir), $filename);
 
-                $test_item->featured_image = 'uploads/'.$test_item->id.'/'.$filename;
+                $test_item->featured_image = 'uploads/'.$request->test_id.'/'.$filename;
                 $test_item->save();
             }
         }
@@ -157,14 +157,14 @@ class AdminTestItemsController extends Controller
 
             if($request->hasFile('featured_image')){
                 $file= $request->file('featured_image');
-                $filename= $test_item->id.'-'.$file->getClientOriginalName();
-                $dir = 'uploads/'.$test_item->id;
+                $filename= $test_item->test_id.'-'.$file->getClientOriginalName();
+                $dir = 'uploads/'.$test_item->test_id;
 
                 File::ensureDirectoryExists($dir);
                 
                 $file->move(public_path($dir), $filename);
 
-                $test_item->featured_image = 'uploads/'.$test_item->id.'/'.$filename;
+                $test_item->featured_image = 'uploads/'.$test_item->test_id.'/'.$filename;
                 $test_item->save();
             }
             
