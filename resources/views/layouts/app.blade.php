@@ -11,7 +11,7 @@
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
 
-    <title>{{ config('app.name', 'Quizz') }}</title>
+    <title>{{ config('app.name', 'Quiz Crashers') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -31,9 +31,9 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm" id="main-navbar">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{asset('images/logo.png')}}" id="main-logo" alt="{{ config('app.name', 'Quiz Crashers') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

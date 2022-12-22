@@ -4,7 +4,7 @@
 <div class="row">
     <div class="card">
       <div class="card-body">
-        <h1 class="display-5">About</h1>
+        <h1 class="display-5 text-primary">About</h1>
         
         <p class="mb-2">Hello dear visitor!</p>
         

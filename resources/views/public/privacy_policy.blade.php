@@ -4,7 +4,7 @@
 <div class="row">
     <div class="card">
       <div class="card-body">
-        <h1 class="display-5">Privacy Policy</h1>  
+        <h1 class="display-5 text-primary">Privacy Policy</h1>  
         <p> 
             This privacy policy describes processing of information provided or collected. 
             

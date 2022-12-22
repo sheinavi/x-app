@@ -26,3 +26,5 @@ Route::get('/quiz/{slug}','TestsController@show')->name('test.show');
 Route::get('/about','HomepageController@about')->name('about');
 Route::get('/contact','HomepageController@contact')->name('contact');
 Route::get('/privacy-policy','HomepageController@privacyPolicy')->name('privacy-policy');
+
+Route::post('/contact','MessagesController@store')->name('contact_us_submit');
