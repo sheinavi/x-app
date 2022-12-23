@@ -76,7 +76,8 @@ class TestsController extends Controller
             ->twitter()
             ->linkedin()
             ->telegram()
-            ->whatsapp()        
+            ->whatsapp()
+            ->pinterest()        
             ->reddit();
 
             $data = [

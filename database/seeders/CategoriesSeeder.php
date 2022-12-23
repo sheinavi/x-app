@@ -14,16 +14,23 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
+
         $categories = [
             ['title' => 'Math','description' => 'Math questions'],
             ['title' => 'Science','description' => 'Science questions'],
             ['title' => 'History','description' => 'History questions'],
             ['title' => 'General Knowledge','description' => 'General Knowledge questions'],
             ['title' => 'Trivia','description' => 'Trivia questions'],
+            ['title' => 'TV','description' => 'TV Shows Questions'],
+            ['title' => 'Music','description' => 'Music Questions'],
+            ['title' => 'Pop Culture','description' => 'Pop culture Questions'],
+            ['title' => 'Geography','description' => 'Geography Questions'],
+            ['title' => 'Language','description' => 'Language Questions'],
+            ['title' => 'Symbols','description' => 'Semiotics Questions'],
         ];
 
         foreach($categories as $category){
-            Category::create($category);
+            Category::updateOrCreate($category);
         }
     }
 }

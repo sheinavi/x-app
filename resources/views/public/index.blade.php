@@ -46,10 +46,12 @@
   </form>
 </div>
 
+
+
           <div class="row">
             @if ( $tests->count() > 0)
               @foreach ($tests as $test)
-                  <div class="col-md-3 d-flex align-items-stretch">
+                  <div class="col-md-3 d-flex align-items-stretch mb-2">
                     <div class="card" style="w-100">
                       
                       <img src="{{asset($test->featured_image)}}" class="homepage-test-thumbnail m-auto pt-2" alt="{{$test->title}}">
@@ -60,7 +62,7 @@
                           <h5 class="card-title text-primary">{{$test->title}}</h5>
                         </a>
 
-                        <p class="card-text">{!! $test->description !!}.</p>
+                        <p class="card-text">{!! $test->description !!} <span class="text-muted"> [{{ $test->items->count() }} questions] </span> </p>
                         <a href="{{route('test.show',['slug' => $test->slug])}}" class="btn btn-primary">START</a>
                       </div>
                     </div>
@@ -71,6 +73,10 @@
                 <p class="display-6">No tests available as of the moment.</p>
               </div>
             @endif
+          </div>
+
+          <div class="row my-2 text-center">
+            @include('public.adspace.horizontal')
           </div>
 
 @endsection

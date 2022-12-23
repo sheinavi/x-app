@@ -1,0 +1,1 @@
+<a target="_blank" href="https://shareasale.com/r.cfm?b=1896894&amp;u=2576161&amp;m=46483&amp;urllink=&amp;afftrack="><img src="https://static.shareasale.com/image/46483/Shared-hosting-build-your-website-728_00.png" border="0" alt="Build your website with Namecheap!" /></a>

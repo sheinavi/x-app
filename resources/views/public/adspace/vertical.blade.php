@@ -1,0 +1,1 @@
+<a target="_blank" href="https://shareasale.com/r.cfm?b=1893680&amp;u=2576161&amp;m=46483&amp;urllink=&amp;afftrack="><img src="https://static.shareasale.com/image/46483/Email-Hosting-160x600-.png" border="0" /></a>

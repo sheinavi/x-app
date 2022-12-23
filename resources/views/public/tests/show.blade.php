@@ -65,10 +65,14 @@
 
           </div>
         </div>
-        <div class="col-md-2"> <!-- ad space --> </div>
+        <div class="col-md-2"> @include('public.adspace.vertical') </div>
     </div>
     
-    <div class="row" id="relatedTests"></div>
+    <div class="row my-2 text-center">
+      @include('public.adspace.horizontal')
+    </div>
+
+    <div class="row" id="relatedTests"> </div>
 @endsection
 
 @push('styles')
