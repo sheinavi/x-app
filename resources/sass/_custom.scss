@@ -14,11 +14,11 @@ main{
 }
 
 nav#main-navbar, .dropdown-menu{
-    background-color: $blue-800;
-    color: #fff;
-    a{
-        color:#fff;
-    }
+    background-color: #fff;
+    color: $blue-800;
+    // a{
+    //     color:#fff;
+    // }
     a.dropdown-item:hover{
         background-color: $primary;
     }
@@ -57,6 +57,10 @@ img.test-banner{
 img#main-logo{
     width:20%;
     background-color: #fff;
-    border-radius:8px;
-    padding:1em;
+}
+
+@media (min-width: 768px){
+    #rightmost-menu{
+        width:185px;
+    }
 }

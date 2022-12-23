@@ -10,10 +10,23 @@ class HomepageController extends Controller
 {
     public function index(){
         
-        $tests = Test::where('is_public',1)
+        $query = Test::where('is_public',1)
                         ->where('is_approved',1)
-                        ->inRandomOrder()
-                        ->paginate(20);
+                        ->inRandomOrder();
+
+        if(request()->has('category_id') && request()->category_id !="" ){
+            $query->where('category_id',request()->category_id);
+        }   
+
+        if(request()->has('key')){
+            $keyword = request()->key;
+            $query->where(function($q) use($keyword) {
+                $q->where('title','like','%'.$keyword.'%');
+                $q->orWhere('description','like','%'.$keyword.'%');
+            });
+        }         
+
+        $tests = $query->paginate(20);
 
         $data = [
             'tests' => $tests,

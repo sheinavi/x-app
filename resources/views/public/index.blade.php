@@ -23,9 +23,9 @@
 @section('content')
 
 <div class="row" id="search-container">
-  <form action="" class="col-12">
-    <div class="input-group my-3">
-      <input type="text" class="form-control" placeholder="Search Quizzes" aria-describedby="search">
+  <form action="" class="col-12 px-0">
+    <div class="input-group mb-3">
+      <input type="text" name="key" value="{{request()->key ?? ''}}" class="form-control" placeholder="Search Quizzes" aria-describedby="search">
       
         <select name="category_id" class="form-select search_category">
           <option value=""> Any Category </option>
@@ -37,8 +37,11 @@
               @endif
           @endforeach
         </select>
-     
-      <button class="btn btn-primary" type="button" id="search">Search</button>
+        
+      <button class="btn btn-primary" type="submit" id="search">Search</button>
+      <a href="/" class="btn btn-outline-secondary d-none d-md-block">Clear Selection</a>
+      <a href="/" class="btn btn-outline-secondary d-none d-md-block">Random Quizzes</a>
+
     </div>
   </form>
 </div>
@@ -52,7 +55,11 @@
                       <img src="{{asset($test->featured_image)}}" class="homepage-test-thumbnail m-auto pt-2" alt="{{$test->title}}">
                       
                       <div class="card-body">
-                        <h5 class="card-title text-primary">{{$test->title}}</h5>
+                        
+                        <a href="{{route('test.show',['slug' => $test->slug])}}">
+                          <h5 class="card-title text-primary">{{$test->title}}</h5>
+                        </a>
+
                         <p class="card-text">{!! $test->description !!}.</p>
                         <a href="{{route('test.show',['slug' => $test->slug])}}" class="btn btn-primary">START</a>
                       </div>

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col ">
+    <div class="col-6 px-0">
       <div class="card">
         <div class="card-header bg-success"> Your Score </div>
         <div class="card-body text-center">
@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="col ">
+    <div class="col-6 px-0">
       <div class="card">
         <div class="card-header bg-primary"> Questions </div>
         <div class="card-body text-center">

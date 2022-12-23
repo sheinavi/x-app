@@ -22,7 +22,11 @@
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
 
-    <title>{{ config('app.name', 'Quiz Crashers') }}</title>
+    <title>{{ config('app.name', 'Quiz Crashers') }} : Home of short and fun quizzes</title>
+    <meta name="description" content="{{ $meta_description ?? 'Take short tests of memory, pop culture, trivia. 5 to 10 questions per quiz. Share it with your friends and compare results. No sign up needed.' }}" />
+    <meta property="og:description" content="{{ $meta_description ?? 'Take short tests of memory, pop culture, trivia. 5 to 10 questions per quiz. Share it with your friends and compare results. No sign up needed.' }}" />
+    <meta name="keywords" content="Short, Quizzes, Fun, Online, Free, No Sign up, Social, Trivia, Movies, History, Music">
+    <meta name="author" content="Sheina Paclibar">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -52,12 +56,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav">
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto" id="rightmost-menu">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -68,7 +72,7 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ route('register') }}"><i class="fas fa-plus-circle"></i> Create Your Own Quiz </a>
+                                    <a class="btn btn-outline-info text-dark" href="{{ route('register') }}"><i class="fas fa-plus-circle"></i> Create Your Own Quiz </a>
                                 </li>
                             @endif
                         @else

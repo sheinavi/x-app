@@ -1,36 +1,36 @@
-@extends('layouts.app', ['social_thumbnail' => asset($test->featured_image) ])
+@extends('layouts.app', ['social_thumbnail' => asset($test->featured_image), 'meta_description' => $test->title.' '.$test->description ])
 
 @section('content')
     <div class="row">
-        <div class="col-md-2">
-          @include('public.tests.parts.scoreboard')
-        </div>
-        <div class="col-md-8">
+        
+        <div class="col-md-10">
           <div class="card">
             <div class="card-body" id="begin">
                   
-                  <h1 class="mb-3"> {{$test->title}} </h1>
+                  <div class="row mb-3">
+                    <div class="col"><h1 class="mb-3"> {{$test->title}} </h1></div>
+                    <div class="col">
+                      @include('public.tests.parts.scoreboard')
+                    </div>
+                  </div>
+                  
                   
                   <div class="row" id="description-box">
-                    <div class="col-md-6">
+                    <div class="col-md-6 text-center">
                       <img src="{{asset($test->featured_image)}}" class="test-banner" alt="">
                     </div>
                     <div class="col-md-6">
                       <p> {!! $test->description  !!} </p>
+                      <div class="d-grid"><button class="mt-5 btn btn-block btn-primary btn-lg start"> Start </button></div>
                     </div>
-                    <div class="col-md-6">
-                      &nbsp;
-                    </div>
-                    <div class="col-md-6 d-grid mt-5">
-                      <button class="btn btn-block btn-primary btn-lg start"> Start </button>
-                    </div>
+                    
                   </div>
 
                   @foreach ($items as $item)
                       <div class="row test-item d-none one-question" id="item-{{$item->id}}" data-val="{{$item->correct_answer->id}}" > 
-                          <div class="col-12"> <h3 class="text-success fw-bold"> {{$item->question}} </h3> </div>
+                          
                           <div class="col-md-6 text-center">
-                              
+                              <h3 class="text-success fw-bold"> {{$item->question}} </h3>
                               <img src="{{asset($item->featured_image)}}" class="question-image" alt="">
                           </div>
                           <div class="col-md-6">
@@ -51,7 +51,7 @@
 
                           
 
-                          <div class="col-md-6 offset-md-6 d-grid mt-3">
+                          <div class="col-md-6 offset-md-6 d-grid mt-3 d-none">
                               <button class="go-next btn btn-primary btn-block" type="button"> Check My Answer </button>
                           </div>
                       </div>
@@ -128,6 +128,11 @@
             $('input:radio').change(function(){
                   $('input:radio[name=choice_'+active_question+']').parent('.choice-container').removeClass('bg-primary').addClass('border-secondary').removeClass('text-white');
                   $('input:radio[name=choice_'+active_question+']:checked').parent('.choice-container').removeClass('border-secondary').addClass('bg-primary').addClass('text-white');
+            });
+
+            $('.form-check-input').on('click',function(){
+              console.log('selected');
+              $(this).closest('.one-question').find('button.go-next').trigger('click');
             });
 
             $('button.go-next').on('click',function(){
