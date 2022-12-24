@@ -51,10 +51,10 @@
           <div class="row">
             @if ( $tests->count() > 0)
               @foreach ($tests as $test)
-                  <div class="col-md-3 d-flex align-items-stretch mb-2">
+                  <div class="col-12 col-md-3 d-flex align-items-stretch mb-2">
                     <div class="card" style="w-100">
                       
-                      <img src="{{asset($test->featured_image)}}" class="homepage-test-thumbnail m-auto pt-2" alt="{{$test->title}}">
+                      <img loading="lazy" src="{{asset($test->featured_image)}}" class="img-thumbnail m-auto pt-2" alt="{{$test->title}}">
                       
                       <div class="card-body">
                         

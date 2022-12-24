@@ -8,8 +8,8 @@
             <div class="card-body" id="begin">
                   
                   <div class="row mb-3">
-                    <div class="col"><h1 class="mb-3"> {{$test->title}} </h1></div>
-                    <div class="col">
+                    <div class="col-12 col-md-6"><h1 class="mb-3"> {{$test->title}} </h1></div>
+                    <div class="col-12 col-md-6">
                       @include('public.tests.parts.scoreboard')
                     </div>
                   </div>
@@ -17,7 +17,7 @@
                   
                   <div class="row" id="description-box">
                     <div class="col-md-6 text-center">
-                      <img src="{{asset($test->featured_image)}}" class="test-banner" alt="">
+                      <img loading="lazy" src="{{asset($test->featured_image)}}" class="test-banner w-100 h-75" alt="">
                     </div>
                     <div class="col-md-6">
                       <p> {!! $test->description  !!} </p>
@@ -31,7 +31,7 @@
                           
                           <div class="col-md-6 text-center">
                               <h3 class="text-success fw-bold"> {{$item->question}} </h3>
-                              <img src="{{asset($item->featured_image)}}" class="question-image" alt="">
+                              <img loading="lazy" src="{{asset($item->featured_image)}}" class="question-image w-100" alt="">
                           </div>
                           <div class="col-md-6">
                               
@@ -65,10 +65,10 @@
 
           </div>
         </div>
-        <div class="col-md-2"> @include('public.adspace.vertical') </div>
+        <div class="d-none d-md-block col-md-2 "> @include('public.adspace.vertical') </div>
     </div>
     
-    <div class="row my-2 text-center">
+    <div class="row my-2 text-center d-none d-md-block">
       @include('public.adspace.horizontal')
     </div>
 

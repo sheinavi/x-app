@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-md-6 text-center">
-            <img src="{{asset($test->featured_image)}}" class="test-banner" alt="">
+            <img src="{{asset($test->featured_image)}}" class="test-banner w-100" alt="">
         </div>
         
         <div class="col-md-6 text-center">
