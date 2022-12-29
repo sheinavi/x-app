@@ -13,7 +13,7 @@
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
 
-    <title>{{ config('app.name', 'Quiz Crashers') }} : Home of short and fun quizzes</title>
+    <title> {{config('app.name', 'Quiz Crashers')}} : {{ $title ?? 'Home of short and fun quizzes' }} </title>
     <meta name="description" content="{{ $meta_description ?? 'Take short tests of memory, pop culture, trivia. 5 to 10 questions per quiz. Share it with your friends and compare results. No sign up needed.' }}" />
     <meta property="og:description" content="{{ $meta_description ?? 'Take short tests of memory, pop culture, trivia. 5 to 10 questions per quiz. Share it with your friends and compare results. No sign up needed.' }}" />
     <meta name="keywords" content="Short, Quizzes, Fun, Online, Free, No Sign up, Social, Trivia, Movies, History, Music">
@@ -62,6 +62,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav">
+                        
                         
                     </ul>
 

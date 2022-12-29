@@ -1,4 +1,4 @@
-@extends('layouts.app', ['social_thumbnail' => asset($test->featured_image), 'meta_description' => $test->title.' '.$test->description ])
+@extends('layouts.app', ['social_thumbnail' => asset($test->featured_image), 'title' => $test->title,  'meta_description' => $test->title.' '.$test->description ])
 
 @section('content')
     <div class="row">

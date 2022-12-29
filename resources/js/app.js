@@ -15,3 +15,4 @@ require('./custom');
 
 //require('./components/Example');
 require('./components/RelatedQuizzes');
+require('./components/MathGame');

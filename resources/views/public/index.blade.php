@@ -1,25 +1,5 @@
 @extends('layouts.app')
 
-@push('styles')
-    <style>
-      #search-container{
-        background-color: #adb5bd;
-        background-image: linear-gradient(180deg, #adb5bd 10%, #e9ecef 100%);
-        background-size: cover;
-      }
-
-      img.homepage-test-thumbnail{
-        width: 100%;
-        height: 150px;
-      }
-
-      .form-select.search_category{
-        max-width:20%;
-      }
-
-    </style>
-@endpush
-
 @section('content')
 
 <div class="row" id="search-container">
@@ -73,6 +53,24 @@
                 <p class="display-6">No tests available as of the moment.</p>
               </div>
             @endif
+
+            <div class="col-12 col-md-3 d-flex align-items-stretch mb-2">
+              <div class="card" style="w-100">
+                
+                <img loading="lazy" src="https://source.unsplash.com/cHhbULJbPwM/300x300" class="img-thumbnail m-auto pt-2" alt="Math Test">
+                
+                <div class="card-body">
+                  
+                  <a href="{{route('games.math')}}">
+                    <h5 class="card-title text-primary">Math Test for Kids</h5>
+                  </a>
+
+                  <p class="card-text"> Simple addition quiz. Add two numbers below 100.  <span class="text-muted"> [10 questions] </span> </p>
+                  <a href="{{route('games.math')}}" class="btn btn-primary">START</a>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div class="row my-2 text-center">
